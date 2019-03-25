@@ -1,0 +1,30 @@
+    /*
+     *  创建普通对象的方法
+     */
+    //1.常用方法（更方便）
+    var obj = {name: "张三"};
+
+    //2.标准方法（更能表现出对象）
+    var obj2 = new Object();
+    obj2.name = "李四";
+
+
+    /*
+     *  创建函数对象的方法
+     * （函数也是一种对象。除了5种基本数据类型String、Number、Boolean、Null、Undefined，其它都是）
+     */
+    //常用方法，创建普通函数，函数名display
+    function display() {
+      console.log("我叫张三");
+    }
+    display();
+
+    //次常用方法，创建函数表达式，将匿名函数赋值给变量display2
+    var display2 = function () {
+      console.log("我叫李四");
+    };
+    display2();
+
+    //不常用方法，创建普通函数，函数名display3,（）中似乎只能写一句？
+    var display3 = new Function(console.log("我叫王五"));
+    display3();
