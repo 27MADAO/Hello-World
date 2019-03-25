@@ -20,3 +20,21 @@
     if(true){
       alert(num + "是质数");
     }
+    
+    
+    //综合以上进行改进后：
+    //找出1-100之间的所有质数
+    var count = 0; //统计质数个数
+    
+    for(var i = 2; i <= 100; i++){
+      var flag = true;
+      for(var j = 2; j <= Math.sqrt(i); j++){ //因子成对出现，只需要进行开方，检查前半部分
+        if( i % j === 0){
+          flag = false;
+          break;
+        }
+      }
+      if(flag){
+        console.log(++count, i+"是质数");
+      }
+    }
