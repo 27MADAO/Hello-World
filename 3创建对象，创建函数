@@ -4,10 +4,12 @@
     //1.常用方法（更方便）
     var obj = {name: "张三"};
 
-    //2.标准方法（更能表现出对象）
+    //2.标准方法（<=自己这么叫的）
     var obj2 = new Object();
     obj2.name = "李四";
-
+    
+    //3.构造函数传参的方式
+    var obj3 = new Object({name: "王五"});
 
     /*
      *  创建函数对象的方法
@@ -25,6 +27,6 @@
     };
     display2();
 
-    //不常用方法，创建普通函数，函数名display3,（）中似乎只能写一句？
+    //不常用方法，构造函数传参的方式创建普通函数，
     var display3 = new Function(console.log("我叫王五"));
     display3();
