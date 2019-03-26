@@ -11,6 +11,9 @@
     //3.构造函数传参的方式
     var obj3 = new Object({name: "王五"});
 
+
+
+
     /*
      *  创建函数对象的方法
      * （函数也是一种对象。除了5种基本数据类型String、Number、Boolean、Null、Undefined，其它都是）
