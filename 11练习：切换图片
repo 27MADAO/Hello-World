@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript">
+    /*
+     * 图片切换练习
+     */
+    window.onload = function () {
+      //获取元素
+      var prev = document.getElementById("prev");
+      var next = document.getElementById("next");
+      var img = document.getElementsByTagName("img")[0]; //根据元素名获取对象会返回类数组
+      var text = document.getElementById("text");
+      //图片组和当前图片索引
+      var imgArr = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg",];
+      var index = 0;
+      //写入提示内容
+      text.innerHTML = "共"+imgArr.length+"张图片，当前为第"+(index+1)+"张";
+      //分别为两个按钮绑定点击事件
+      prev.onclick = function () {
+        index--;
+        //设置为循环切换
+        if(index < 0){
+          index = imgArr.length - 1;
+        }
+        img.src = imgArr[index];
+        text.innerHTML = "共"+imgArr.length+"张图片，当前为第"+(index+1)+"张";
+      };
+      next.onclick = function () {
+        index++;
+        if(index > imgArr.length - 1){
+          index = 0;
+        }
+        img.src = imgArr[index];
+        text.innerHTML = "共"+imgArr.length+"张图片，当前为第"+(index+1)+"张";
+      }
+    }
+    /*js代码的位置：放在html结构后，后执行就后加载，放后面性能好。
+                    放前面需要放在window.onload事件后，先加载不执行，等页面加载完毕再执行，放前面显眼方便修改。*/
+  </script>
+  <style type="text/css">
+    /*清除自带样式*/
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #container{
+      width: 640px;
+      margin: 50px auto;
+      padding: 5px 10px;
+      text-align: center;
+      background: cadetblue;
+    }
+  </style>
+</head>
+<body>
+    <div id="container">
+        <p id="text"></p>
+        <img src="img/1.jpg" alt="动漫美少女"/>
+        <button id="prev">上一张</button>
+        <button id="next">下一张</button>
+    </div>
+</body>
+</html>
+
