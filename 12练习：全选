@@ -91,7 +91,7 @@
             alert(items[i].value);
           }
         }
-        }
+      }
     }
   </script>
 </head>
