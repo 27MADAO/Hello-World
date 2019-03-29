@@ -52,9 +52,14 @@
           newTr.appendChild(ageTd);
           newTr.appendChild(genderTd);
           newTr.appendChild(deleteTd);
-          // 将tr插入到personTable中
+          /*// 将tr插入到personTable中
           var personTable = document.getElementById("personTable");
-          personTable.appendChild(newTr);
+          personTable.appendChild(newTr);*/
+          //↓↓↓↓由于浏览器会为table自动添加tbody，所以应该插入到tbody中
+          // 将tr插入到personTable的tbody中
+          var personTable = document.getElementById("personTable");
+          var personTbody = personTable.getElementsByTagName("tbody")[0];
+          personTbody.appendChild(newTr);
         }
       }
     }
