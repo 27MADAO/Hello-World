@@ -6,7 +6,7 @@
   <script type="text/javascript">
     window.onload = function () {
       //提取删除操作的方法
-      function deleteOperation() {
+      function deleteOperate() {
         var tr = this.parentNode.parentNode; //获取到要删除的行
         var name = tr.children[0];// 同var name = tr.getElementsByTagName("td")[0];
         let flag = confirm("确定删除 " + name.innerText + "？");
@@ -18,49 +18,49 @@
       //删除操作
       var as = document.getElementsByTagName("a");
       for (var i = 0; i < as.length; i++) {
-        as[i].onclick = deleteOperation;
-        //添加操作
-        var submitBtn = document.getElementById("submitBtn");
-        submitBtn.onclick = function () {
-          //1获取到输入的内容
-          var name = document.getElementById("nameInput").value;
-          var age = document.getElementById("ageInput").value;
-          var gender = document.getElementById("genderInput").value;
-          //2在personTable中创建相应的结构
-          // 创建文本节点承载输入内容
-          var nameNode = document.createTextNode(name);
-          var ageNode = document.createTextNode(age);
-          var genderNode = document.createTextNode(gender);
-          // 创建删除单元格里的内容
-          var deleteNode = document.createTextNode("DELETE");
-          var deleteA = document.createElement("a");
-          deleteA.href = "javascript:;";
-          deleteA.onclick = deleteOperation;//为新添加的a添加点击删除事件
-          deleteA.appendChild(deleteNode);
-          // 创建td元素承载对应的文本节点
-          var nameTd = document.createElement("td");
-          nameTd.appendChild(nameNode);
-          var ageTd = document.createElement("td");
-          ageTd.appendChild(ageNode);
-          var genderTd = document.createElement("td");
-          genderTd.appendChild(genderNode);
-          var deleteTd = document.createElement("td");
-          deleteTd.appendChild(deleteA);
-          // 创建tr元素承载对应的td元素
-          var newTr = document.createElement("tr");
-          newTr.appendChild(nameTd);
-          newTr.appendChild(ageTd);
-          newTr.appendChild(genderTd);
-          newTr.appendChild(deleteTd);
-          /*// 将tr插入到personTable中
-          var personTable = document.getElementById("personTable");
-          personTable.appendChild(newTr);*/
-          //↓↓↓↓由于浏览器会为table自动添加tbody，所以应该插入到tbody中
-          // 将tr插入到personTable的tbody中
-          var personTable = document.getElementById("personTable");
-          var personTbody = personTable.getElementsByTagName("tbody")[0];
-          personTbody.appendChild(newTr);
-        }
+        as[i].onclick = deleteOperate;
+      }
+      //添加操作
+      var submitBtn = document.getElementById("submitBtn");
+      submitBtn.onclick = function () {
+        //1获取到输入的内容
+        var name = document.getElementById("nameInput").value;
+        var age = document.getElementById("ageInput").value;
+        var gender = document.getElementById("genderInput").value;
+        //2在personTable中创建相应的结构
+        // 创建文本节点承载输入内容
+        var nameNode = document.createTextNode(name);
+        var ageNode = document.createTextNode(age);
+        var genderNode = document.createTextNode(gender);
+        // 创建删除单元格里的内容
+        var deleteNode = document.createTextNode("DELETE");
+        var deleteA = document.createElement("a");
+        deleteA.href = "javascript:;";
+        deleteA.onclick = deleteOperate;//为新添加的a添加点击删除事件
+        deleteA.appendChild(deleteNode);
+        // 创建td元素承载对应的文本节点
+        var nameTd = document.createElement("td");
+        nameTd.appendChild(nameNode);
+        var ageTd = document.createElement("td");
+        ageTd.appendChild(ageNode);
+        var genderTd = document.createElement("td");
+        genderTd.appendChild(genderNode);
+        var deleteTd = document.createElement("td");
+        deleteTd.appendChild(deleteA);
+        // 创建tr元素承载对应的td元素
+        var newTr = document.createElement("tr");
+        newTr.appendChild(nameTd);
+        newTr.appendChild(ageTd);
+        newTr.appendChild(genderTd);
+        newTr.appendChild(deleteTd);
+        /*// 将tr插入到personTable中
+        var personTable = document.getElementById("personTable");
+        personTable.appendChild(newTr);*/
+        //↓↓↓↓由于浏览器会为table自动添加tbody，所以应该插入到tbody中
+        // 将tr插入到personTable的tbody中
+        var personTable = document.getElementById("personTable");
+        var personTbody = personTable.getElementsByTagName("tbody")[0];
+        personTbody.appendChild(newTr);
       }
     }
   </script>
