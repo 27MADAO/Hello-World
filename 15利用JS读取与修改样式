@@ -9,9 +9,10 @@
       var box = document.getElementById("box");
       btn.onclick = function () {
         //获取与设置元素的内联样式：元素.style.样式名
+        // 此方法只针对内联样式有效
         alert(box.style.backgroundColor); //100px。
 
-        //获取样式的当前显示样式（只读，不可修改）：
+        //获取样式的当前显示样式，无关样式写入方式（只读，不可修改）：
         // 1元素.currentStyle.样式名（仅IE支持）
         // 2getComputedStyle(元素，null)(IE8及其以下不支持)，返回对象，需要什么样式属性需要进一步取出
         // 一般二者结合使用
