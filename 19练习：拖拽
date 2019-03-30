@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>拖拽</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      function getScroll(value){
+        var html = document.documentElement;
+        var body = document.body;
+        console.log(body["scroll"+value] || html["scroll"+value]);
+        return body["scroll"+value] || html["scroll"+value];
+      }
+      //整个过程：鼠标在div按下，div开始跟随移动，鼠标任意位置松开，div停止移动
+      var box = document.getElementById("box");
+      //鼠标在box被按下了，可以触发移动事件了
+      box.onmousedown = function (event) {
+        //设置box捕获所有鼠标按下事件
+        box.setCapture && box.setCapture();
+        event = event || window.event;
+        //记录鼠标按下时相对于div原点的位置
+        var left = box.offsetLeft; //同var left = getComputedStyle(box, null).left; ←这个带单位
+        var top = box.offsetTop; //同var top = getComputedStyle(box, null).top;
+        var xd = event.clientX + getScroll("Left") - left; //可能存在滚动页面的情况，坐标需要加上滚动的距离
+        var yd = event.clientY + getScroll("Top") - top;
+        //鼠标移动事件
+        document.onmousemove = function (event) {
+          event = event || window.event;
+          var newLeft = event.clientX + getScroll("Left")- xd;
+          var newTop = event.clientY + getScroll("Top") - yd;
+          box.style.left = newLeft + "px";
+          box.style.top = newTop + "px";
+          // alert("鼠标移动了");
+        };
+        //鼠标松开了，可以停止移动事件了
+        document.onmouseup = function () {
+          document.onmousemove = null;
+          document.onmouseup = null;
+          box.releaseCapture && box.releaseCapture();
+        };
+        //如果有文本图片等内容，选中后拖动浏览器会默认去搜索引擎搜索内容
+        // 这个搜索行为会优先于我们写的拖拽，所以会影响到拖拽行为
+        // 阻止拖动后搜索：
+        // 1.火狐等：return false取消默认行为（IE8及其以上支持）
+        // 2.IE：利用setCapture劫持事件
+        //   xx.setCapture()开启捕获，会将下一次的鼠标按下行为劫持到xx身上，无论实际点的是谁
+        //   xx.releaseCapture()释放捕获
+        return false;
+      };
+    }
+  </script>
+  <style type="text/css">
+    body{
+      height: 1200px;
+    }
+    #box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+</body>
+  <span>文本内容</span>
+  <div id="box"></div>
+</html>
