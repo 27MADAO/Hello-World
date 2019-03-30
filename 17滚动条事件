@@ -6,14 +6,22 @@
   <script type="text/javascript">
     window.onload = function () {
       var info = document.getElementById("info");
+      var checked = document.getElementById("checked");
+      var submitBtn = document.getElementById("submitBtn");
       info.onscroll = function () {
-        var checked = document.getElementById("checked");
-        var submitBtn = document.getElementById("submitBtn");
         if(info.scrollHeight - info.scrollTop == info.clientHeight){
           checked.disabled = false;
-          submitBtn.disabled = false;
         }
-      }
+      };
+      checked.onclick = function () {
+        /*if(checked.checked){
+          submitBtn.disabled = false;
+        }else{
+          submitBtn.disabled = true;
+        } */
+        //↓↓↓↓↓↓简写
+        submitBtn.disabled = !checked.checked;
+      };
     }
   </script>
   <style type="text/css">
@@ -53,3 +61,6 @@
   </div>
 </body>
 </html>
+
+
+
