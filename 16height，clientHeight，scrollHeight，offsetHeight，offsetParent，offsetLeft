@@ -56,11 +56,11 @@
 height: 容器可容纳内容部分的高
 clientHeight: 容器内部的高，height + padding（双）
 offsetHeight: 容器整体的高，height + padding（双）+ border（双）
-offsetParent: 获取定位父元素
-offsetLeft：与offsetParent的水平偏移量
 srcollHeight: 容器与承载内容相互影响后的高
      承载内容的整体 <（height+单padding）时 ，= clientHight
      承载内容的整体 >（height+单padding）时 ，= padding（单）+ 承载内容的offsetHeight（测试时偶尔有1px的误差，不规律，暂时不知道什么原因）
+offsetParent: 获取定位父元素
+offsetLeft：与offsetParent的水平偏移量
 
      
      
