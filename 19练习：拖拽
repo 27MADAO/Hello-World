@@ -8,7 +8,6 @@
       function getScroll(value){
         var html = document.documentElement;
         var body = document.body;
-        console.log(body["scroll"+value] || html["scroll"+value]);
         return body["scroll"+value] || html["scroll"+value];
       }
       //整个过程：鼠标在div按下，div开始跟随移动，鼠标任意位置松开，div停止移动
@@ -18,19 +17,19 @@
         //设置box捕获所有鼠标按下事件
         box.setCapture && box.setCapture();
         event = event || window.event;
-        //记录鼠标按下时相对于div原点的位置
+        //记录鼠标按下时div原点的位置
         var left = box.offsetLeft; //同var left = getComputedStyle(box, null).left; ←这个带单位
         var top = box.offsetTop; //同var top = getComputedStyle(box, null).top;
-        var xd = event.clientX + getScroll("Left") - left; //可能存在滚动页面的情况，坐标需要加上滚动的距离
-        var yd = event.clientY + getScroll("Top") - top;
+        //记录鼠标按下时的坐标。可能存在滚动页面的情况，而鼠标坐标是相对于窗口的，所以需要加上滚动的距离
+        var clientX = event.clientX + getScroll("Left");
+        var clientY = event.clientY + getScroll("Top");
         //鼠标移动事件
         document.onmousemove = function (event) {
           event = event || window.event;
-          var newLeft = event.clientX + getScroll("Left")- xd;
-          var newTop = event.clientY + getScroll("Top") - yd;
-          box.style.left = newLeft + "px";
-          box.style.top = newTop + "px";
-          // alert("鼠标移动了");
+          //box原点和鼠标相对静止，鼠标移动多少，box移动多少
+          //即 newLeft - left = newClientX - clientX, 变形得 newLeft = newClientX - clientX + left；
+          box.style.left = event.clientX  + getScroll("Left") - clientX + left + "px";
+          box.style.top = event.clientY + getScroll("Top") - clientY + top + "px";
         };
         //鼠标松开了，可以停止移动事件了
         document.onmouseup = function () {
