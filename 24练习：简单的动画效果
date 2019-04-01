@@ -99,28 +99,3 @@
 <div id="line"></div>
 </body>
 </html>
-
-
-//提取出的move方法
-function move(obj, attribute ,target, speed, callback) {
-  //判断移动方向
-  var origin = parseInt(getStyle(obj, attribute));
-  speed = target < origin ? -speed : speed;
-  //特殊情况不可移动
-  if(target === origin && origin === 0){
-    alert("触边界了，不可以这么动哟(＾＾)ノ~");
-    return;
-  }
-  obj.timer = setInterval(function () {
-    //如果终点位置大于起点位置，则当移动到大于终点位置处时，终止移动，并使当前位置等于终点位置
-    //如果终点位置小于起点位置，则当移动到小于终点位置处时，终止移动，并使当前位置等于终点位置
-    //综上，两种情况可统一为一个条件：（终点位置-起点位置）*（当前位置-终点位置）> 0，终止移动，使当前位置 = 终点位置
-    var current = parseInt(getStyle(obj, attribute)) + speed;
-    let flag = (target - origin) * (current - target) > 0 ;
-    obj.style[attribute] = flag ? target + "px" : current + "px";
-    if(flag){
-      clearInterval(obj.timer);
-      callback && callback();
-    }
-  },30);
-}
