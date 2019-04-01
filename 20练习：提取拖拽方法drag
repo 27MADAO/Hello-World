@@ -17,14 +17,12 @@
           event = event || window.event;
           var left = obj.offsetLeft;
           var top = obj.offsetTop;
-          var xd = event.clientX + getScroll("Left") - left;
-          var yd = event.clientY + getScroll("Top") - top;
+          var clientX = event.clientX + getScroll("Left");
+          var clientY = event.clientY + getScroll("Top");
           document.onmousemove = function (event) {
             event = event || window.event;
-            var newLeft = event.clientX + getScroll("Left")- xd;
-            var newTop = event.clientY + getScroll("Top") - yd;
-            obj.style.left = newLeft + "px";
-            obj.style.top = newTop + "px";
+            obj.style.left = event.clientX  + getScroll("Left") - clientX + left + "px";
+            obj.style.top = event.clientY + getScroll("Top") - clientY + top + "px";
           };
           document.onmouseup = function () {
             document.onmousemove = null;
@@ -67,6 +65,6 @@
 <body>
   <div id="div1"></div>
   <div id="div2"></div>
-  <img id="img1" src="img/1.jpg"/>
+  <img id="img1" src="../img/1.jpg"/>
 </body>
 </html>
