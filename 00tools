@@ -49,19 +49,23 @@ function move(obj, attribute ,target, speed, callback) {
     }
   },30);
 }
+
 function hasClass(obj, className) {
   var reg = new RegExp("\\b"+className+"\\b");
   return reg.test(obj.className)
 }
+
 function addClass(obj, className) {
   if(!hasClass(obj, className)){
     obj.className += " " + className;
   }
 }
+
 function removeClass(obj, className) {
   var reg = new RegExp("\\b"+className+"\\b");
   obj.className = obj.className.replace(reg, "");
 }
+
 function toggleClass(obj, className) {
   if(! hasClass(obj, className)){
     addClass(obj, className);
