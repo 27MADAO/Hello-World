@@ -1,0 +1,3 @@
+1.display与visibility
+  dispaly: none； 彻底没了，看不见，也不占位置。
+  visibility：hidden； 看不见，但是还占着位置（这大概就是闹鬼吧）。
