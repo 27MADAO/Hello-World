@@ -1,0 +1,35 @@
+1.event
+  一般浏览器：浏览器自动添加传参到方法，使用直接event
+  IE8及以下：作为window属性存储，使用时window.event
+  >>>>>
+  event = event || window.event
+  
+2.获取鼠标数据
+  一般浏览器：event.wheelData //向上滚正值，向下滚负值
+  火狐浏览器：event.detail //向上滚负值，向下滚正值
+  >>>>>
+  if(event.wheelData>0 || event.detail<0){
+    //向上滚
+  }else{
+    //向下滚
+  }
+       
+3.添加事件监听方法
+  一般浏览器：obj.addEventListener("click", callback, false) //事件是不加on的字符串；this是obj；false，不在捕获阶段厨房
+  IE8及以下：obj.attachEvent("onclick", callback) //事件是加on的字符串；this是window；执行顺序相反，后绑定先执行
+  >>>>>
+  function bind(obj, "click", callback){
+    if(obj.addEventListener){
+      obj.addEventListener("click", callback, false);
+    }else{
+      obj.attachEvent("onclick", fuction(){
+        callback.call(obj);
+      })
+    }
+  }
+  
+4.滚轮事件绑定
+  一般浏览器：onmousewheel
+  火狐浏览器：DOMMouseSroll，且只能用addEventListener()方式绑定
+  >>>>>
+  同时绑定两个
