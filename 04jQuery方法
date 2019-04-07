@@ -1,0 +1,28 @@
+>>>>>
+静态方法：添加在类上，类名调用
+实例方法：添加在类的原型函数上，实例调用
+
+
+jQuery的几个静态方法：
+1.each方法    //遍历，返回原数组
+  $.each(arr, function(index, value){}）
+  >>>>>arr.forEach(function(value, index){})
+  比较js：callback的参数顺序不同；可以遍历伪数组。
+  
+2.map方法   //遍历，返回新数组（指定return）
+  $.map(arr, function(value, index){})
+  >>>>>arr.map(function(value, index, arr){})
+  比较js：callback的参数顺序相同；可以遍历伪数组。
+  
+3.trim方法    //去除字符串两端空格
+  $.trim(str);
+  >>>>>str.trim();
+
+4.几个判断类型方法    //返回true/false
+  $.isWindow(obj);
+  $.isArray(obj);
+  $.isFunction(obj);
+  
+5.hasReady方法    //参数true/false
+  $.hasReady(true); //暂停ready内容的执行
+  $.hasReady(false); //恢复ready内容的执行
