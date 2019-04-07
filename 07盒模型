@@ -13,7 +13,7 @@
          .clearfix:before{
             content: "";
             display: table;
-         }
+         } //为所有需要解决父子元素margin重叠问题的父元素添加class=clearfix
          
   内联元素：水平margin支持，垂直margin不支持。
   
