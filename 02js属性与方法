@@ -1,3 +1,17 @@
+0.利用Navigator对象的userAgent属性判断浏览器
+  各浏览器的userAgent内容中会包含自己的标识：firefox（火狐）、chrome（谷歌）、msie（IE，11以后不再包含）
+  >>>>>
+  var ua = navigator.userAgent;
+  if(/firefox/i.test(ua)){
+    //火狐
+  }else if(/chrome/i.test(ua)){
+    //谷歌
+  }else if(/msie/i.test(ua)){
+    //IE
+  }else if("ActiveXObject" in window){
+    //IE 11
+  }
+  
 1.event
   一般浏览器：浏览器自动添加传参到方法，使用直接event
   IE8及以下：作为window属性存储，使用时window.event
