@@ -18,11 +18,11 @@
   一般浏览器：obj.addEventListener("click", callback, false) //事件是不加on的字符串；this是obj；false，不在捕获阶段厨房
   IE8及以下：obj.attachEvent("onclick", callback) //事件是加on的字符串；this是window；执行顺序相反，后绑定先执行
   >>>>>
-  function bind(obj, "click", callback){
+  function bind(obj, event, callback){
     if(obj.addEventListener){
-      obj.addEventListener("click", callback, false);
+      obj.addEventListener(event, callback, false);
     }else{
-      obj.attachEvent("onclick", fuction(){
+      obj.attachEvent("on"+event, fuction(){
         callback.call(obj);
       })
     }
