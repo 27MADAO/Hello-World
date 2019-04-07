@@ -5,8 +5,15 @@
           (可以用来设置块元素水平居中 margin: 0 auto)
          垂直margin设置为auto，为0。
          
-         相邻的兄弟元素，垂直margin会重叠，取较大值。相邻（上边界一致时）的父子元素，垂直margin会传递（即设置子元素margin-top，不会使自身相对父元素
+         相邻的兄弟元素，垂直margin会重叠，取较大值。
+         相邻（上边界一致时）的父子元素，垂直margin会传递/重叠（即设置子元素margin-top，不会使自身相对父元素
          下移，而是会使整个父元素下移。）
+         >>>>>
+         解决父子元素margin重叠，可以在父元素内容最前面添加一个空table元素（无意义结构，一般用伪元素代替）：
+         .clearfix:before{
+            content: "";
+            display: table;
+         }
          
   内联元素：水平margin支持，垂直margin不支持。
   
