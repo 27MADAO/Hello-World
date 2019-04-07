@@ -1,0 +1,8 @@
+1.:content(text)    //找到含有指定文本内容的指定对象
+  如：var $div = ("div:content('hello')"); 
+2.:has(selector)    //找到含有指定子元素的指定父元素
+  如：var $div = ("div:has('span')")    
+3.:parent   //找到有文本内容，或有子元素的指定元素（即找到非空的指定元素）
+  如：var $div = ("div:parent") 
+4.:empty    //找到既没有文本内容，也没有子元素的指定元素（即找到空的指定元素）  
+  如：var $div = ("div:empty")
