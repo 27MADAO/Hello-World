@@ -42,6 +42,13 @@
                 display: block;
                 clear: both;
               } //为所有需要撑开高度的父元素添加class=clearfix
+             >>>>>结合前面盒模型父子元素margin重叠解决方案，完善clearfix为：
+            .clearfix:before, .clearfix:after{
+                content: "";
+                display: table;
+                clear: both;
+              }  
   IE浏览器：  zoom: 1; //在所有需要撑开高度的父元素样式中添加
+  
   
   
