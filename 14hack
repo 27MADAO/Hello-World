@@ -13,6 +13,7 @@ CSS HACK：一段特殊的代码，只在某些浏览器中被识别。用于解
             * IE7及以下识别
   hack$值： \9 IE6以上识别
             \0  IE9
+  >>>>>^hack||hack&，二选一添加
           
 3.选择hack
   语法：hack+selector{}
