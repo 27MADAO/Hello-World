@@ -1,0 +1,31 @@
+属性节点方法：
+attr("属性名"[,"属性值"]); //一个为获取，两个为设置
+reomve("属性名")
+
+属性方法：
+prop(); //同attr()
+removeProp(); //同removeAttr()
+
+>>>>>操作后，基本相同，不知道除了checked、selected、disabled属性获取值返回不同外还有什么不同
+     文档推荐，checked、selected、disabled之类使用prop()(返回true/false），其他用attr()
+     
+操作类的方法：
+addClass();
+removeClass();
+toggleClass();
+
+获取元素内容方法：
+html(); //同js的innerHTML属性
+text(); //同js的innerText属性
+val();  //同js的value属性
+
+样式设置方法：
+css(); 
+>>>>> 三种设置方式：
+      1.单独设置：.css("样式名","样式值")
+      2.链式设置：.css("样式名1","样式值1").css("样式名2","样式值2").css("样式名3","样式值3")......
+      3.批量设置: .css({
+                    样式名1："样式值1"，
+                    样式名2："样式值2"，
+                    样式名3："样式值3"，
+                 }) //对象形式传入，方便阅读，推荐写法
