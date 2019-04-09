@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件命名空间</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    $("document").ready(function () {
+      $(".zs").on("click.zs", function () {
+        console.log($(this).text())
+      });
+      $(".ls").on("click.ls", function () {
+        console.log($(this).text())
+      });
+      $("a").trigger("click.ls")
+    })
+    // on()方式绑定响应函数时，可以在事件后跟.xx添加事件命名空间
+    // 结合trigger()方法可以触发指定命名空间的响应函数，冒泡也只会传递给相同命名空间的父元素
+  </script>
+</head>
+<body>
+  <a href="#" class="zs">点我zs</a>
+  <a href="#" class="ls">点我ls</a>
+</body>
+</html>
