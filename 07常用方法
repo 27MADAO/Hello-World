@@ -40,6 +40,7 @@ scrollTop(); //无参获取相对文档偏移量，数值传参设置（无单�
       //因为部分浏览器视滚动元素为html，部分视为body
       
  事件有关方法：
+ 移入移出事件：hover(func1, func2); //mouseenter+mouseleave
  事件绑定：eventName(func); //效率高
           on("event", func); //事件全
  事件移除：off(); //无参移除所有事件响应；一参("event")移除指定事件所有响应；二参("event", func)移除指定事件的指定响应
