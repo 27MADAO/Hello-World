@@ -43,6 +43,7 @@ scrollTop(); //无参获取相对文档偏移量，数值传参设置（无单�
  事件绑定：eventName(func); //效率高
           on("event", func); //事件全
  事件移除：off(); //无参移除所有事件响应；一参("event")移除指定事件所有响应；二参("event", func)移除指定事件的指定响应
+ 事件委托：被委托元素.delegate("委托元素", "event", func); //将动态添加元素的事件委托给页面加载时即存在的元素（一般父元素）
  阻止冒泡：event.stopPropagation(); //或return false; 
  阻止默认：event.preventDefault(); //或return false; 
  自动触发：trigger("event"); //特例a元素会被阻止冒泡与默认行为
