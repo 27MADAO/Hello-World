@@ -9,3 +9,9 @@
               clear: both;
             } //为所有需要撑开高度的父元素添加class=clearfix
   IE浏览器： zoom: 1; //在所有需要撑开高度的父元素样式中添加
+  
+3.如果有些样式设置后大多浏览器通用，但是IE需有些许调整，可以适当使用hack
+
+4.IE6双倍边距问题
+  为float：left元素添加margin-left时，实际渲染数值会是设置的2倍（right同理）。
+  解决方案：为float元素添加：display：inline；（基本没影响，解决原理不明）
