@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab选项卡</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    // siblings(); 非当前元素
+    $(function () {
+      $(".tab>li").mouseenter(function () {
+        $(this).addClass("current");
+        $(this).siblings().removeClass("current");
+        var $index = $(this).index();
+        var $currentPic = $(".content>li").eq($index);
+        $currentPic.siblings().removeClass("currentPic");
+        $currentPic.addClass("currentPic");
+      })
+    })
+  </script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      width: 640px;
+      margin: 50px auto;
+    }
+    .box li{
+      list-style: none;
+    }
+    .tab li{
+      float: left;
+      text-align: center;
+      line-height: 50px;
+      width: calc(640px /5);
+      background-color: orange;
+      cursor: default;
+    }
+    .tab .current{
+      background-color: gray;
+    }
+    .content li{
+      display: none;
+    }
+    .content .currentPic{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <ul class="tab">
+      <li class="current">一号嘉宾</li>
+      <li>二号嘉宾</li>
+      <li>三号嘉宾</li>
+      <li>四号嘉宾</li>
+      <li>五号嘉宾</li>
+    </ul>
+    <ul class="content">
+      <li class="currentPic"><img src="img/1.jpg" alt="一号嘉宾"></li>
+      <li><img src="img/2.jpg" alt="一号嘉宾"></li>
+      <li><img src="img/3.jpg" alt="一号嘉宾"></li>
+      <li><img src="img/4.jpg" alt="一号嘉宾"></li>
+      <li><img src="img/5.jpg" alt="一号嘉宾"></li>
+    </ul>
+  </div>
+</body>
+</html>
