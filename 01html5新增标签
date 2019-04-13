@@ -1,0 +1,19 @@
+html5是指html的第五次重大修改.
+基本所有主流浏览器都支持（chrome、firefox、safari），
+IE9及以上支持，但是部分标签会识别成内联元素;
+IE8及以下不支持，不识别。
+兼容性解决：引入外部js文件html5shiv.js，原理是自行创建不识别的标签。
+
+语义化标签：
+<header>
+<main>
+<footer>
+<nav>
+<article>
+<aside>
+//以上标签基本同div，仅多了标签名的语义
+
+<progress> 当前进度值 //可以做进度条
+           属性：max、value
+<meter> 度量器，衡量当前进度值 //可以做密码强度衡量
+        属性：high规定的较高的值、low规定的较低的值、max最大值、min最小值、value当前度量值
