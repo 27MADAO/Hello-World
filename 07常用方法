@@ -14,6 +14,17 @@ addClass();
 removeClass();
 toggleClass();
 
+操作节点的方法：
+增加节点：append(); //父元素.append("子元素")，在最后加
+         preappend(); //同上，在最前加
+         appendTo(); //子元素.append("父元素")，在最后加
+         preaddendTo(); //同上，在最前加
+删除节点：remove(); //删除指定元素，可加参数进一步缩小元素范围，另有detach()方法作用相同
+         empty(); //清空指定元素
+替换节点：replaceWith(); //原节点.replaceWith(新节点)
+         replaceAll(); //新节点.replaceAll(原节点)
+复制节点：clone(bol); //false浅克隆（克隆结构与样式），true深克隆（克隆结构样式与事件）
+
 元素内容方法：
 html(); //同js的innerHTML属性
 text(); //同js的innerText属性
@@ -60,7 +71,8 @@ get(index); //同上，返回的原DOM元素
 siblings(); //获取非当前元素
 children("selector"); //获取子元素
 
-动画效果方法：     //调用对象一般为设置了display:none的元素；ms动画执行时间；ms后面可以设置easing动画节奏，一般用默认
+动画效果方法：     
+（调用对象一般为设置了display:none的元素；ms动画执行时间；ms后面可以设置easing动画节奏，一般用默认）
 显示隐藏： show(ms, callback);
           hide(ms, callback);
           toggle(ms, callback);//参数都可缺省，表立即完成
@@ -75,4 +87,5 @@ children("selector"); //获取子元素
               stop(bool, bool); //前者表是否停止后续动画，后者表是否完成当前动画，默认双false
 全局设置： jQuery.fx.off = true; //关闭所有动画效果
           jQuery.fx.internal = xxx; //动画帧数，越小越流畅越消耗资源
+          
     
