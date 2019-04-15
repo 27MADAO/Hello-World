@@ -1,8 +1,0 @@
-DOM元素.classList.add("className"); 
->>>>> addClass("className");
-DOM元素.classList.remove("className"); 
->>>>> removeClass("className");
-DOM元素.classList.toggle("className"); 
->>>>> toggleClass("className");
-DOM元素.classList.containes("className"); 
->>>>> hasClass("className");
