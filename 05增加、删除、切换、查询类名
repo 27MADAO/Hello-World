@@ -1,0 +1,18 @@
+1.获取DOM元素
+  document.querySelector("selector); //只返回第一个匹配
+  document.querySelectorAll("selector); //数组形式返回所有匹配
+  
+2.增加、删除、切换、查询类名
+  DOM元素.classList.add("className"); 
+  >>>>> addClass("className");
+  DOM元素.classList.remove("className"); 
+  >>>>> removeClass("className");
+  DOM元素.classList.toggle("className"); 
+  >>>>> toggleClass("className");
+  DOM元素.classList.containes("className"); 
+  >>>>> hasClass("className");
+
+3.自定义属性
+  定义：data-xx //data开头，单词间-连接
+  获取：DOM元素.dataset["dataXx"] //属性名驼峰法
+
