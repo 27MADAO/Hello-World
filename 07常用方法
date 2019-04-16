@@ -16,9 +16,9 @@ toggleClass();
 
 操作节点的方法：
 增加节点：append(); //父元素.append("子元素")，在最后加
-         preappend(); //同上，在最前加
-         appendTo(); //子元素.append("父元素")，在最后加
-         preaddendTo(); //同上，在最前加
+         prepend(); //同上，在最前加
+         appendTo(); //子元素.appendTo("父元素")，在最后加
+         predendTo(); //同上，在最前加
 删除节点：remove(); //删除指定元素，可加参数进一步缩小元素范围，另有detach()方法作用相同
          empty(); //清空指定元素
 替换节点：replaceWith(); //原节点.replaceWith(新节点)
