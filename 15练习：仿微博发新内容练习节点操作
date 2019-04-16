@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>weibo</title>
+  <link rel="stylesheet" href="css/page-index.css">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script src="tools.js"></script>
+  <script>
+    $(function () {
+      //监听textarea的输入事件
+      $("textarea").on("input", function () {
+        if($.trim($(this).val()).length === 0){
+          $(".send").prop("disabled", true);
+          $(".send").addClass("send-disabled");
+        }else{
+          $(".send").prop("disabled", false);
+          $(".send").removeClass("send-disabled")
+        }
+      });
+      //监听send的发送事件
+      $(".send").click(function () {
+        var $sendText = $("textarea").val();
+        var $date = formatDate(new Date(), "yyyy-mm-dd hh:mm:ss");
+        // var $formatDate = $date.getFullYear() + "-" + $date.getMonth() + "-" + $date.getDate() + " " + $date.getHours()
+        //   + ":" + $date.getMinutes() + ":" +  $date.getSeconds();
+        var $li = $("<li>\n" +
+          "          <p class=\"text\">"+ $sendText +"</p>\n" +
+          "          <span class=\"establish\">"+ $date +"</span>\n" +
+          "          <span class=\"operate\">\n" +
+          "            <a class=\"up\" href=\"javascript:;\">0</a>\n" +
+          "            <a class=\"down\" href=\"javascript:;\">0</a>\n" +
+          "            <a class=\"del\" href=\"javascript:;\">删除</a>\n" +
+          "          </span>\n" +
+          "        </li>")
+        $(".comments").prepend($li);
+        $("textarea").val("");
+      });
+      //监听评论相关事件
+      $("body").delegate(".up", "click", function () {
+        changeState($(this));
+      });
+      $("body").delegate(".down", "click", function () {
+        changeState($(this));
+      });
+      $("body").delegate(".del", "click", function () {
+        $(this).parents(".comments li").remove();
+      });
+      function changeState(curEle) {
+        //当前状态
+        var curState = curEle.attr("class");
+        //另一个状态（返回第一个兄弟元素的类名，正好符合需求，不进一步处理了）
+        var otherState = curEle.siblings().attr("class");
+        //自定义的flag，放在表态按钮的公有父元素中，表是否已经表态过
+        switch (curEle.parent().attr("flag")) { 
+          case curState:
+            curEle.parent().attr("flag", "");
+            curEle.text( + curEle.text() - 1 );
+            break;
+          case otherState:
+            curEle.parent().attr("flag", curState);
+            curEle.text( + curEle.text() + 1 );
+            curEle.siblings("."+otherState).text( + curEle.text() - 1 );
+            break;
+          default:
+            curEle.parent().attr("flag", curState);
+            curEle.text( + curEle.text() + 1 );
+            break;
+        }
+      }
+    })
+  </script>
+  <script src="tools.js"></script>
+</head>
+<body>
+  <header></header>
+  <main class="clearfix w">
+    <aside></aside>
+    <div class="content">
+      <div class="input">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <input class="send send-disabled" type="button" value="发布" disabled="disabled"/>
+      </div>
+      <ul class="comments">
+        <li>
+          <p class="text">agfsghehtagfsghehtagfsghehtagfsghehtagfsghehtagfsghehtagfsghehtagfsgheht</p>
+          <span class="establish">2019-03-16 21:05:02</span>
+          <span class="operate">
+            <a class="up" href="javascript:;">0</a>
+            <a class="down" href="javascript:;">0</a>
+            <a class="del" href="javascript:;">删除</a>
+          </span>
+        </li>
+        <li>
+          <p class="text">agfsghehtagfsghehtagfsghehtagfsghehtagfsghehtagfsghehtagfsghehtagfsgheht</p>
+          <span class="establish">2019-03-16 22:05:02</span>
+          <span class="operate">
+            <a class="up" href="javascript:;">0</a>
+            <a class="down" href="javascript:;">0</a>
+            <a class="del" href="javascript:;">删除</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <aside></aside>
+  </main>
+  <footer class="w">
+    <a href="javascript:;">1</a>
+    <a href="javascript:;">2</a>
+    <a href="javascript:;">3</a>
+  </footer>
+</body>
+</html>
