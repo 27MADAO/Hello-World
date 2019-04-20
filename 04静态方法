@@ -26,3 +26,5 @@ jQuery的几个静态方法：
 5.hasReady方法    //参数true/false
   $.hasReady(true); //暂停ready内容的执行
   $.hasReady(false); //恢复ready内容的执行
+
+6.ajax方法 //既可以获取本地文件，也可以获取网络文件
