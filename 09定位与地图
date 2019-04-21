@@ -1,0 +1,4 @@
+自带的方法navigator.geolocation.getCurrentPosition(successCallback, errorCallback, option)基本没用，一般使用第三方API
+
+1.百度API：
+  百度地图开放平台 => 开发文档，提供有各种接口和demo => 测试密钥：DarF2LCCGzn6T16zgy8ZPkvYYE5CT6fu
