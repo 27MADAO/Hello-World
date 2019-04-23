@@ -1,0 +1,17 @@
+1.属性
+  duration //总时长
+  currentTime //当前进度
+  paused //当前播放状态
+  ended //播放完毕与否
+2.方法
+  canPlayType() //检查是否可播放指定类型
+  addTextTrack() //添加新的文字轨道
+  play() //播放
+  pause() //暂停
+  load() //重新加载
+3.事件
+  canplay //加载完毕，可以播放
+  timeupdate //播放进度改变（播放中持续触发/设置currentTime也会触发，但是webStorm有问题，要从项目源文件下打开页面才有效）
+  pause //暂停
+  ended //播放完毕
+  
