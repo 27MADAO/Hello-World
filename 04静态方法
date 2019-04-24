@@ -28,3 +28,9 @@ jQuery的几个静态方法：
   $.hasReady(false); //恢复ready内容的执行
 
 6.ajax方法 //既可以获取本地文件，也可以获取网络文件
+  $.ajax({
+    url: "",
+    dataType: "",
+    success: callback,
+    error: callback
+  })
