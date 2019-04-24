@@ -72,6 +72,9 @@ eq(index); //获取一组中指定索引的元素,返回的jQuery对象
 get(index); //同上，返回的原DOM元素
 siblings(); //获取非当前元素
 children("selector"); //获取子元素
+parent("selector"); //获取父元素
+find("selector"); //获取后代元素
+parents("selector"); //获取祖先元素
 
 动画效果方法：     
 （调用对象一般为设置了display:none的元素；ms动画执行时间；ms后面可以设置easing动画节奏，一般用默认）
