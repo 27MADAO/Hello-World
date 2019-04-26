@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>鼠标轮滚动事件</title>
+  <script type="text/javascript">
+    window.onload = function(){
+      //要求：鼠标向上滚动，box高度变短；向下滚动，变长
+      var box = document.getElementById("box");
+      box.onmousewheel = function (event) {
+        //兼容相关：event事件，一般默认传实参给响应函数，IE8及以下作为window的属性存放
+        event = event || window.event;
+        //兼容相关：关于滚轮数据，一般放在event.wheelDelta属性里(正上负下)，火狐放在event.detail属性里（负上正下）
+        //回忆一遍height, clientHeight, offsetHeight, scrollHeight
+        if(event.wheelDelta < 0 || event.detail > 0){
+          box.style.height = box.clientHeight + 10 + "px";
+        }else if(box.clientHeight > 10){ //防止减没了
+          box.style.height = box.clientHeight - 10 + "px";
+        }
+        //当页面出现滚动条时，会影响滚轮控制div高度，需要取消浏览器默认行为
+        //addEventListener()方式绑定响应事件时，return false无用，需要使用event.preventDefault()来阻止
+        //兼容相关：event.preventDefault()方法IE8及其以下不支持，用前需要确定存在此方法
+        event.preventDefault && event.preventDefault();
+        return false;
+      };
+      //兼容相关：onmousewheel事件火狐不支持，用DOMMouseScroll事件代替，需要用addEventListener方法绑定
+      box.addEventListener("DOMMouseScroll", box.onmousewheel, false);
+    }
+  </script>
+  <style type="text/css">
+    body{
+      height: 1200px;
+    }
+    #box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+</body>
+</html>

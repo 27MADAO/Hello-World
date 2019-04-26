@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>简单的动画效果</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      function getStyle(obj, attribute) {
+        return getComputedStyle ? getComputedStyle(obj, null)[attribute] : obj.currentStyle[attribute];
+      }
+      function move(obj, attribute ,target, speed, callback) {
+        //对同一个元素开启一个定时器前关闭上一个
+        clearInterval(obj.timer);
+        //判断移动方向
+        var origin = parseInt(getStyle(obj, attribute));
+        speed = target < origin ? -speed : speed;
+        //一些特殊情况
+        if(target === origin){
+          return;
+        }
+        obj.timer = setInterval(function () {
+          //如果终点位置大于起点位置，则当移动到大于终点位置处时，终止移动，并使当前位置等于终点位置
+          //如果终点位置小于起点位置，则当移动到小于终点位置处时，终止移动，并使当前位置等于终点位置
+          //综上，两种情况可统一为一个条件：（终点位置-起点位置）*（当前位置-终点位置）> 0，终止移动，使当前位置 = 终点位置
+          var current = parseInt(getStyle(obj, attribute)) + speed;
+          let flag = (target - origin) * (current - target) > 0 ;
+          obj.style[attribute] = flag ? target + "px" : current + "px";
+          if(flag){
+            clearInterval(obj.timer);
+            callback && callback();
+          }
+        },30);
+      }
+
+      var box = document.getElementById("box");
+      var btn01 = document.getElementById("btn01");
+      btn01.onclick = function (){
+        move(box, "left", 800, 13);
+      };
+      var btn02 = document.getElementById("btn02");
+      btn02.onclick = function () {
+        move(box, "left", 0, 13)
+      };
+      var btn03 = document.getElementById("btn03");
+      btn03.onclick = function () {
+        move(box, "top", 400, 13)
+      };
+      var btn04 = document.getElementById("btn04");
+      btn04.onclick = function () {
+        move(box, "top", 50, 13)
+      };
+      var btn05 = document.getElementById("btn05");
+      function circle() {
+        move(box, "left", 800, 13 ,function () {
+          move(box, "top", 400, 13,function () {
+            move(box, "left", 0, 13,function () {
+              move(box, "top", 50, 13, circle);
+            })
+          })
+        })
+      }
+      btn05.onclick = circle;
+      var btn06 = document.getElementById("btn06");
+      btn06.onclick = function () {
+        move(box, "height", 400, 13)
+      };
+    }
+  </script>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      left: 0;
+      top: 50px;
+    }
+    #line{
+      border-left: 1px solid #000;
+      position: absolute;
+      left: 800px;
+      top: 0;
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+<button id="btn01">向右移动</button>
+<button id="btn02">向左移动</button>
+<button id="btn03">向下移动</button>
+<button id="btn04">向上移动</button>
+<button id="btn05">循环移动</button>
+<button id="btn06">样式变化</button>
+<div id="box"></div>
+<div id="line"></div>
+</body>
+</html>

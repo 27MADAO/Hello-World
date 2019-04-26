@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文件读取</title>
+<!--  
+  读取方法：
+  （方法无返回值，读取结果直接存入对象的result属性中）
+  1.readAsText(); //读取文本文件，字符串形式存入（utf-8编码）
+  2.readAsBinaryString(); //读取任意类型文件，字符串形式存入
+  3.readAsDataURL(); //一般读取图片之类文件，字符串形式存入（base64编码的字符串，data开头，字符串中包含有文件类型，如jpg等）
+  4.abort(); //中断读取
+  读取事件：
+  onabort 读取中断时触发
+  onerror 读取出错时触发
+  onload 读取成功时触发
+  onloadstart 读取开始时触发
+  onloadend 读取结束（无论成功与否）时触发
+  onprogress 读取过程中持续触发
+-->
+  <script>
+    window.onload = function () {
+      var input = document.getElementsByTagName("input")[0];
+      input.onchange = function () {
+        var reader = new FileReader();
+        var file = input.files[0];
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          document.getElementsByTagName("img")[0].src = reader.result;
+        }
+      }
+    }
+  </script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      width: 640px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <img src="" alt="">
+  <input type="file">
+</div>
+</body>
+</html>

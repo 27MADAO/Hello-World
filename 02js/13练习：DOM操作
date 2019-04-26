@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>增删改练习</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      //提取删除操作的方法
+      function deleteOperate() {
+        var tr = this.parentNode.parentNode; //获取到要删除的行
+        var name = tr.children[0];// 同var name = tr.getElementsByTagName("td")[0];
+        let flag = confirm("确定删除 " + name.innerText + "？");
+        if (flag) {
+          tr.parentNode.removeChild(tr);
+        }
+      }
+
+      //删除操作
+      var as = document.getElementsByTagName("a");
+      for (var i = 0; i < as.length; i++) {
+        as[i].onclick = deleteOperate;
+      }
+      //添加操作
+      var submitBtn = document.getElementById("submitBtn");
+      submitBtn.onclick = function () {
+        //1获取到输入的内容
+        var name = document.getElementById("nameInput").value;
+        var age = document.getElementById("ageInput").value;
+        var gender = document.getElementById("genderInput").value;
+        //2在personTable中创建相应的结构
+        // 创建文本节点承载输入内容
+        var nameNode = document.createTextNode(name);
+        var ageNode = document.createTextNode(age);
+        var genderNode = document.createTextNode(gender);
+        // 创建删除单元格里的内容
+        var deleteNode = document.createTextNode("DELETE");
+        var deleteA = document.createElement("a");
+        deleteA.href = "javascript:;";
+        deleteA.onclick = deleteOperate;//为新添加的a添加点击删除事件
+        deleteA.appendChild(deleteNode);
+        // 创建td元素承载对应的文本节点
+        var nameTd = document.createElement("td");
+        nameTd.appendChild(nameNode);
+        var ageTd = document.createElement("td");
+        ageTd.appendChild(ageNode);
+        var genderTd = document.createElement("td");
+        genderTd.appendChild(genderNode);
+        var deleteTd = document.createElement("td");
+        deleteTd.appendChild(deleteA);
+        // 创建tr元素承载对应的td元素
+        var newTr = document.createElement("tr");
+        newTr.appendChild(nameTd);
+        newTr.appendChild(ageTd);
+        newTr.appendChild(genderTd);
+        newTr.appendChild(deleteTd);
+        /*// 将tr插入到personTable中
+        var personTable = document.getElementById("personTable");
+        personTable.appendChild(newTr);*/
+        //↓↓↓↓由于浏览器会为table自动添加tbody，所以应该插入到tbody中
+        // 将tr插入到personTable的tbody中
+        var personTable = document.getElementById("personTable");
+        var personTbody = personTable.getElementsByTagName("tbody")[0];
+        personTbody.appendChild(newTr);
+      }
+    }
+  </script>
+  <style type="text/css">
+    table{
+      margin: 50px auto;
+      text-align: center;
+    }
+    #personTable{
+      border-left: 1px solid #000;
+      border-top: 1px solid #000;
+    }
+    #personTable td{
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 5px 10px;
+    }
+    #insertTable{
+      border: 1px solid #000;
+      padding: 0 30px;
+    }
+    #insertTable th{
+      padding: 10px 0;
+    }
+    #insertTable td{
+      padding: 5px 0;
+    }
+    #insertTable button{
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <table id="personTable" cellspacing="0">
+    <tr>
+      <td>姓名</td>
+      <td>年龄</td>
+      <td>性别</td>
+      <td>操作</td>
+    </tr>
+    <tr>
+      <td>张三</td>
+      <td>28</td>
+      <td>男</td>
+      <td><a href="javascript:;">DELETE</a></td>
+    </tr>
+    <tr>
+      <td>李四</td>
+      <td>26</td>
+      <td>男</td>
+      <td><a href="javascript:;">DELETE</a></td>
+    </tr>
+    <tr>
+      <td>王五</td>
+      <td>33</td>
+      <td>男</td>
+      <td><a href="javascript:;">DELETE</a></td>
+    </tr>
+    <tr>
+      <td>赵六</td>
+      <td>20</td>
+      <td>男</td>
+      <td><a href="javascript:;">DELETE</a></td>
+    </tr>
+  </table>
+
+  <table id="insertTable">
+    <tr>
+      <th colspan="2">添加新人员</th>
+    <tr>
+      <td>姓名：</td>
+      <td>
+        <input type="text" id="nameInput"/>
+      </td>
+    </tr>
+    <tr>
+      <td>年龄：</td>
+      <td>
+        <input type="text" id="ageInput"/>
+      </td>
+    </tr>
+    <tr>
+      <td>性别：</td>
+      <td>
+        <input type="text" id="genderInput"/>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button id="submitBtn">提交</button>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

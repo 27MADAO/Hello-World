@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据存储sessionStorage与localStorage</title>
+  <script>
+    /*
+     * 二者有相同的方法：
+     * setItem(key, value); //存储数据
+     * getItem(key); //获取数据
+     * removeItem(key); //删除数据
+     * clear(); //清空所有数据
+     * 不同处：
+     * sessionStorage：
+     * 1.容量5mb
+     * 2.存储于当前页面，页面关闭，数据清除
+     * localStorage：
+     * 1.容量20mb
+     * 2.存储于硬盘，永久保存，手动清除
+     * 3.相同浏览器的不同窗口共享数据
+     */
+    window.onload = function () {
+      var username, password;
+      document.getElementById("un").onchange = function () {
+        username = this.value;
+      };
+      document.getElementById("pw").onchange = function () {
+        password = this.value;
+      };
+      document.querySelector(".setData").onclick = function () {
+        window.sessionStorage.setItem("username", username);
+        window.sessionStorage.setItem("password", password);
+      };
+      document.querySelector(".getData").onclick = function () {
+        alert(window.sessionStorage.getItem("username"));
+      };
+      document.querySelector(".removeData").onclick = function () {
+        window.sessionStorage.removeItem("password")
+      };
+      document.querySelector(".clearData").onclick = function () {
+        window.sessionStorage.clear();
+      };
+    }
+  </script>
+  <style>
+    input:nth-child(-n+2){
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <label for="un">用户名：<input type="text" class="username" id="un"/></label>
+  <label for="pw">密  码：<input type="text" class="username" id="pw"/></label>
+  <input type="button" class="setData" value="存储数据">
+  <input type="button" class="getData" value="获取数据">
+  <input type="button" class="removeData" value="删除数据">
+  <input type="button" class="clearData" value="清空数据">
+</body>
+</html>

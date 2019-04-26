@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      var btn = document.getElementById("btn");
+      var box = document.getElementById("box");
+      btn.onclick = function () {
+        //获取与设置元素的内联样式：元素.style.样式名
+        // 此方法只针对内联样式有效
+        alert(box.style.backgroundColor); //100px。
+
+        //获取样式的当前显示样式，无关样式写入方式（只读，不可修改）：
+        // 1元素.currentStyle.样式名（仅IE支持）
+        // 2getComputedStyle(元素，null)(IE8及其以下不支持)，返回对象，需要什么样式属性需要进一步取出
+        // 一般二者结合使用
+        function getStyle(obj, styleName) {
+          return window.getComputedStyle ? getComputedStyle(obj, null)[styleName] : obj.currentStyle[styleName];
+          //不知道是IE8现在支持getComputedStyle()方法，还是说浏览器没有成功切换IE8，反正没有测试到currentStyle
+          //编辑器里是显示currentStyle属性无效
+        }
+        alert(getStyle(box, "width"));
+      }
+    }
+  </script>
+  <style type="text/css">
+    #box{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">点我一下</button>
+  <br/><br/>
+  <div id="box" style="width: 100px; height: 100px; background: yellow"></div>
+</body>
+</html>
