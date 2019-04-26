@@ -1,0 +1,12 @@
+1.网络相关事件：
+  ononline //网络连通时触发
+  onoffline //网络断开时触发
+  >>>>> 由window调用，通过addEventListenter绑定
+
+2.全屏相关方法：
+  requestFullScreen() //开启全屏显示，需全屏显示的元素调用
+  cancelFullScreen() //关闭全屏显示，documen调用
+  fullScreenElement //属性，是否开启了全屏
+  >>>>> 不同浏览器需加不同前缀，chrome（webkit）、firefox（moz）、ie（ms）、opera（o）
+        （fullScreenElement属性仅moz完全符合驼峰命名，其余浏览器方法中Screen的s小写）
+  
