@@ -1,0 +1,9 @@
+1.display与visibility
+  dispaly: none; //彻底没了，看不见，也不占位置。
+  visibility：hidden; //看不见，但是还占着位置（这大概就是闹鬼吧）。
+  
+2.user-select属性 //设置禁止文本复制等
+
+3.filter: blur(12px); //设置模糊，值越大越模糊
+
+4.jQuery-custom-scroller插件 //jQuery插件，可设置滚动条样式，依赖jQuery

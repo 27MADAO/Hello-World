@@ -1,0 +1,18 @@
+伪元素选择器指代一个特殊的位置
+
+以下范围在p元素内部
+p:first-letter p元素内容的第一个字符
+p:first-line p元素内容的最后一个字符
+p:before p元素内容的前面
+p:after p元素内容的后面
+
+以下范围在p元素的父元素内部
+p:first-child 父元素的第一个元素，且这个元素必须是p元素
+p:last-child 父元素的最后一个元素，且这个元素必须是p元素
+p:nth-child(n) 父元素指定位置的p元素，n可以是具体数字指代具体位置，也可以是odd（奇数位置），even（偶数位置）
+类似但范围较小要求的有
+p:first-of-type 父元素下所有p元素中的第一个
+p:last-of-type 父元素下所有p元素中的最后一个
+
+在范围中进行排除
+p:not(.class) 在所有p元素中排除某类元素，p可更换成组合选择器，.class可更换成#id或某元素等

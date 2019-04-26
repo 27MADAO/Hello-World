@@ -1,0 +1,10 @@
+table,块元素。
+常用属性：
+标签中：colspan(合并横向单元格）、rowspan(合并纵向单元格)
+样式中：border-spacing //指定边与边的距离
+       border-collapse：collapse； //合并边。可用来制作单边表格。
+       
+table中几个标签：
+<thead>内容永远出现在最上面，与书写位置无关
+<tfoot>内容永远出现在最下面，与书写位置无关
+<tbody>没写浏览器也会自动添加，因此table>tr无效，需tbody>tr
