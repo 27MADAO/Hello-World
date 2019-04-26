@@ -1,0 +1,96 @@
+属性节点方法：
+attr("属性名"[,"属性值"]); //一个为获取，两个为设置
+reomve("属性名")
+
+属性方法：
+prop(); //同attr()
+removeProp(); //同removeAttr()
+
+>>>>>操作后，基本相同，不知道除了checked、selected、disabled属性获取值返回不同外还有什么不同
+     文档推荐，checked、selected、disabled之类使用prop()(返回true/false），其他用attr()
+     
+操作类的方法：
+addClass();
+removeClass();
+toggleClass();
+
+操作节点的方法：
+增加节点：append(); //父元素.append("子元素")，在最后加
+         prepend(); //同上，在最前加
+         appendTo(); //子元素.appendTo("父元素")，在最后加
+         predendTo(); //同上，在最前加
+删除节点：remove(); //删除指定元素，可加参数进一步缩小元素范围，另有detach()方法作用相同
+         empty(); //清空指定元素
+替换节点：replaceWith(); //原节点.replaceWith(新节点)
+         replaceAll(); //新节点.replaceAll(原节点)
+复制节点：clone(bol); //false浅克隆（克隆结构与样式），true深克隆（克隆结构样式与事件）
+
+元素内容方法：
+html(); //同js的innerHTML属性
+text(); //同js的innerText属性
+val();  //同js的value属性
+
+样式设置方法：
+css(); 
+>>>>> 三种设置方式：
+      1.单独设置：.css("样式名","样式值")
+      2.链式设置：.css("样式名1","样式值1").css("样式名2","样式值2").css("样式名3","样式值3")......
+      3.批量设置: .css({
+                    样式名1："样式值1"，
+                    样式名2："样式值2"，
+                    样式名3："样式值3"，
+                 }) //对象形式传入，方便阅读，推荐写法
+
+样式属性相关方法：
+width(); //无参获取，字符串传参设置
+offset(); //left、top属性获取相对窗口偏移量，对象传参设置（无单位）
+position(); //left、top属性获取想相对父定位元素偏移量
+scrollTop(); //无参获取相对文档偏移量，数值传参设置（无单位）
+>>>>> $("html").scrollTop() + $("body").scrollTop(); //获取文档偏移量
+      $("html, body").scrollTop(xx); //设置文档偏移量
+      //因为部分浏览器视滚动元素为html，部分视为body
+      
+ 事件有关方法：
+ 移入移出事件：hover(func1, func2); //mouseenter+mouseleave
+ 事件绑定：eventName(func); //效率高
+          on("event", func); //事件全
+ 事件移除：off(); //无参移除所有事件响应；一参("event")移除指定事件所有响应；二参("event", func)移除指定事件的指定响应
+ 事件委托：被委托元素.delegate("委托元素", "event", func); //将动态添加元素的事件委托给页面加载时即存在的元素（如父元素、body等）
+          >>>>>$("body/被委托元素").delegate("委托元素", "input change", callback)可用来监控实时输入
+               //input获焦种内容有变化触发，change失焦后内容有变化触发
+ 阻止冒泡：event.stopPropagation(); //或return false; 
+ 阻止默认：event.preventDefault(); //或return false; 
+ 自动触发：trigger("event"); //特例a元素会被阻止冒泡与默认行为
+                              >>>>> 在a元素中添加span元素，将自动触犯事件绑定给span
+          triggerHandler("event"); //阻止冒泡与默认行为的触发
+ 自定义事件：用on()方法绑定，配合trigger()触发 //event自定义
+ 页面滚动事件：$(window).scroll(fuc);
+          
+获取元素相关方法：
+index(); //获取元素索引
+eq(index); //获取一组中指定索引的元素,返回的jQuery对象
+get(index); //同上，返回的原DOM元素
+siblings(); //获取非当前元素
+children("selector"); //获取子元素
+parent("selector"); //获取父元素
+find("selector"); //获取后代元素
+parents("selector"); //获取祖先元素
+
+动画效果方法：     
+（调用对象一般为设置了display:none的元素；ms动画执行时间；ms后面可以设置easing动画节奏，一般用默认）
+显示隐藏： show(ms, callback);
+          hide(ms, callback);
+          toggle(ms, callback);//参数都可缺省，表立即完成
+滑上滑下： slideDown(ms, callback);
+          slideUp(ms, callback);
+          slideToggle(ms, callback);
+淡入淡出： fadeIn(ms, callback);
+          fadeOut(ms, callback);
+          fadeTo(ms, opacity, callback);
+自定义动画： animate({}, ms, callback); //{}中的样式会以动画方式渐变完成
+延迟停止动画： delay(ms);
+              stop(bool, bool); //前者表是否停止后续动画，后者表是否完成当前动画，默认双false
+全局设置： jQuery.fx.off = true; //关闭所有动画效果
+          jQuery.fx.internal = xxx; //动画帧数，越小越流畅越消耗资源
+          
+    

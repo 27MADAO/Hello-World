@@ -1,0 +1,16 @@
+jQuery的核心函数$()，（）中可以接收内容：
+
+1.接收一个函数
+  $(function(){}); 即入口函数
+  
+2.接收一个字符串
+  字符串选择器：var $box = $(".box");  查找class=box的元素，并包装成jQuery对象返回
+  >>>>>同var box = document.getElementById("box")；
+  字符串代码：var $p = $("<p>段落标签</p");  创建p元素，并包装成jQUery对象返回
+  >>>>>同var p = document.createNode("p");
+  
+3.接收一个DOM元素
+  var span = document.getElementsByTagName("span")[0];
+  var $span = $(span); 将获取到的DOM对象包装成jQuery对象返回
+  
+=>以上都返回一个jQuery对象，jQuery对象是一个类数组，有length属性，以及对应的0—(length-1)的属性

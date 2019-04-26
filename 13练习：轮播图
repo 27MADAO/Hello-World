@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    $(function () {
+      //设置初始，并开启自动切换
+      $(".img").css({width: 655 * $(".img>li").length});
+      $(".nav").css({marginLeft: ($("img").width() - $(".nav").width())/2})
+      var $picIndex = 0;
+      var timer;
+      changeNav();
+      autoPlay();
+      //点击nav切换图片
+      $(".nav>li").click(function () {
+        clearInterval(timer);
+        $picIndex = $(this).index();
+        changeNav();
+        $(".img").animate({marginLeft: $picIndex * -655}, 500, function () {
+          autoPlay();
+        });
+      });
+      //自动切换图片方法
+      function autoPlay() {
+        timer = setInterval(function () {
+          $picIndex = ++$picIndex % $(".img>li").length;
+          changeNav();
+          $(".img").animate({marginLeft: $picIndex * -655}, 500, function () {
+            if($picIndex === $(".img>li").length -1){
+              $(".img").css({marginLeft: 0});
+              $picIndex++;
+            }
+          });
+        }, 3000);
+      }
+      //设置图片导航切换方法
+      function changeNav() {
+        var $navIndex = $picIndex % $(".nav>li").length; //由于第六张隐形图片的存在，图片和图片导航的index不完全一样
+        $(".nav>li").eq($navIndex).children("a").css({backgroundColor: "black"});
+        $(".nav>li").eq($navIndex).siblings().children("a").css({backgroundColor: ""});
+      }
+    })
+  </script>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .clearfix:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    div{
+      width: 640px;
+      height: 400px;
+      margin: 50px auto;
+      padding: 15px;
+      background-color: darkslategray;
+      overflow: hidden;
+    }
+    .img{
+      list-style: none;
+      /*width: calc(655px * 6);*/
+    }
+    .img>li{
+      float: left;
+      margin-right: 15px;
+    }
+    .nav{
+      list-style: none;
+      float: left;
+      margin-top: -35px;
+      /*margin-left: calc((640px - 20px * 5 - 10px * 4)/2);*/
+      opacity: 0.5;
+    }
+    .nav>li{
+      float: left;
+      margin-right: 10px;
+    }
+    .nav>li:last-child{
+      margin-right: 0;
+    }
+    .nav>li>a{
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+    }
+    .nav>li>a:hover{
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <ul class="img clearfix">
+    <li><img src="img/1.jpg"/></li>
+    <li><img src="img/2.jpg"/></li>
+    <li><img src="img/3.jpg"/></li>
+    <li><img src="img/4.jpg"/></li>
+    <li><img src="img/5.jpg"/></li>
+    <li><img src="img/1.jpg"/></li>
+  </ul>
+  <ul class="nav clearfix">
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+  </ul>
+</div>
+</body>
+</html>

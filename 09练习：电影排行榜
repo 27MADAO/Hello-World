@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>电影排行榜</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $("li").hover(function () {
+        $(this).addClass("show")
+      },function () {
+        $(this).removeClass("show")
+      })
+    })
+  </script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      width: 300px;
+      height: 500px;
+      margin: 50px auto;
+      border: 1px #000 solid;
+      cursor: text;
+    }
+    .box>h1, .box li{
+      padding: 5px 10px;
+      border-bottom: 1px dashed #ccc;
+    }
+    .box>h1{
+      font-size: 20px;
+      color: deeppink;
+    }
+    .box li{
+      list-style: none;
+    }
+    li>a{
+      color: #333;
+      text-decoration: none;
+    }
+    li>span{
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      background-color: #ccc;
+      margin-right: 5px;
+    }
+    ul>li:nth-child(-n+3) span{
+      background-color: deeppink;
+    }
+    .content{
+      display: none;
+      margin-top: 5px;
+    }
+    .content img{
+      height: 80px;
+      float: left;
+    }
+    .content p{
+      font-size: 12px;
+      line-height: 1.8;
+      text-indent: 1em;
+    }
+    .show .content{
+      display: block;
+    }
+    .show a{
+      color: deeppink;
+      text-decoration: underline;
+    }
+    .box h1, .box li{
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>电影排行榜</h1>
+    <ul>
+      <li>
+        <span>1</span><a href="#">电影名称</a>
+        <div class="content">
+          <a href="#"><img src="img/1.jpg" alt="美少女"></a>
+          <p>是国内知名的在线视频弹幕网站,拥有最棒的ACG氛围,哔哩哔哩内容丰富多元,涵盖动漫、电影、二次元舞蹈视频、在线音乐、娱乐时尚、科技生活、鬼畜视频等。</p>
+        </div>
+      </li>
+      <li>
+        <span>2</span><a href="#">电影名称</a>
+        <div class="content">
+          <a href="#"><img src="img/1.jpg" alt="美少女"></a>
+          <p>是国内知名的在线视频弹幕网站,拥有最棒的ACG氛围,哔哩哔哩内容丰富多元,涵盖动漫、电影、二次元舞蹈视频、在线音乐、娱乐时尚、科技生活、鬼畜视频等。</p>
+        </div>
+      </li>
+      <li>
+        <span>3</span><a href="#">电影名称</a>
+        <div class="content">
+          <a href="#"><img src="img/1.jpg" alt="美少女"></a>
+          <p>是国内知名的在线视频弹幕网站,拥有最棒的ACG氛围,哔哩哔哩内容丰富多元,涵盖动漫、电影、二次元舞蹈视频、在线音乐、娱乐时尚、科技生活、鬼畜视频等。</p>
+        </div>
+      </li >
+      <li>
+        <span>4</span><a href="#">电影名称</a>
+        <div class="content">
+          <a href="#"><img src="img/1.jpg" alt="美少女"></a>
+          <p>是国内知名的在线视频弹幕网站,拥有最棒的ACG氛围,哔哩哔哩内容丰富多元,涵盖动漫、电影、二次元舞蹈视频、在线音乐、娱乐时尚、科技生活、鬼畜视频等。</p>
+        </div>
+      </li>
+      <li>
+        <span>5</span><a href="#">电影名称</a>
+        <div class="content">
+          <a href="#"><img src="img/1.jpg" alt="美少女"></a>
+          <p>是国内知名的在线视频弹幕网站,拥有最棒的ACG氛围,哔哩哔哩内容丰富多元,涵盖动漫、电影、二次元舞蹈视频、在线音乐、娱乐时尚、科技生活、鬼畜视频等。</p>
+        </div>
+      </li>
+      <li>
+        <span>6</span><a href="#">电影名称</a>
+        <div class="content">
+          <a href="#"><img src="img/1.jpg" alt="美少女"></a>
+          <p>是国内知名的在线视频弹幕网站,拥有最棒的ACG氛围,哔哩哔哩内容丰富多元,涵盖动漫、电影、二次元舞蹈视频、在线音乐、娱乐时尚、科技生活、鬼畜视频等。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

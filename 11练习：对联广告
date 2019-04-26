@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对联广告</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $(window).scroll(function () {
+        // var offset = $(window).scrollTop();
+        var offset = $("html, body").scrollTop();  //好像都能取到
+        if(offset >= 500){
+          $("img").show(1000);
+        }else{
+          $("img").hide(1000);
+        }
+      })
+    })
+  </script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      height: 2500px;
+    }
+    img{
+      position: fixed;
+      top: 200px;
+      display: none;
+    }
+    .left{
+      left: 0;
+    }
+    .right{
+      right: 0;
+    }
+    p{
+      font-size: 70px;
+      color: darkred;
+      width: 70px;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <p>滚动页面出广告</p>
+  <img src="img/1.jpg" alt="一号美少女" class="left">
+  <img src="img/2.jpg" alt="二号美少女" class="right">
+</body>
+</html>

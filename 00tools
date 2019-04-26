@@ -1,0 +1,18 @@
+function formatDate(date, format) {
+  date = date.getTime ? date: new Date(date);
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  switch (format) {
+    case "yyyy-mm-dd hh:mm:ss":
+      return year + "-" + two(month) + "-" + two(day) + " " + two(hour) + ":" + two(minute) + ":" + two(second);
+    default:
+      return;
+  }
+}
+function two(t) {
+  return parseInt(t/10)+ "" + t%10;
+}
