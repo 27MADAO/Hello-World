@@ -1,6 +1,0 @@
-=> title属性可以添加给任意元素，作用是鼠标移入元素后显示提示文字，文字内容为title值
-p[title] 选择含有title属性的p元素
-p[title="hello"] 选择含有title属性，且值为hello的p元素
-p[title^="h"] 选择含有title属性，且值的首字符为h的p元素
-p[title$="o"] 选择含有title属性，且值的尾字符为o的p元素
-p[title*="l"] 选择含有title属性，且值中含有l字符的p元素
