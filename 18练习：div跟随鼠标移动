@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>div跟随鼠标移动</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      var box = document.getElementById("box");
+      document.onmousemove = function (event) {
+        //解决兼容问题。IE8及其以下是将event作为window的属性来保存
+        event = event || window.event;
+        var html = document.documentElement; //同var html = document.getElementsByTagName("html")[0];
+        var body = document.body; //同var body = document.getElementsByTagName("body")[0];
+        //解决兼容问题。chrome认为scroll是出现在body，火狐IE认为是出现在html
+        var scrollLeft = body.scrollLeft || html.scrollLeft;
+        var scrollTop = body.scrollTop || html.scrollTop;
+        var x = event.clientX + scrollLeft;
+        var y = event.clientY + scrollTop;
+        box.style.left = x + "px";
+        box.style.top = y + "px";
+      }
+    }
+  </script>
+  <style type="text/css">
+    body{
+      height: 1200px;
+    }
+    #box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      /*漏掉了关键性的一句↓*/
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+</body>
+</html>

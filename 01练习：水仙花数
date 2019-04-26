@@ -1,0 +1,21 @@
+    var num = +prompt('输入一个数字，得到它的各位数3次幂之和：');
+
+    function getSum(num) {
+      //得到最高位进度
+      for(var n = 1; num/n > 10; n *= 10){};
+
+      //从最高位上的数开始计算3次幂并相加
+      var sum = Math.pow(parseInt(num/n), 3);
+      if(n > 1){
+        sum += getSum(num%n, n/10);
+      }
+      return sum;
+    }
+    alert("所输数字各位数3次幂之和："+getSum(num));
+
+    //200以内的水仙花数（已知153是水仙花数，用来测试逻辑是否正确。出现153就是正确的）
+    for(var i = 0; i <= 200; i++){
+      if(i === getSum(i)){
+        console.log(i);
+      }
+    }

@@ -1,0 +1,44 @@
+    /*
+     * 原型函数
+     *  类有一个隐含属性prototype，类的实例有一个隐含属性__proto__，它们都指向这个类对应的原型函数（通过保存地址）
+     *  即指向了一个公共区域，可以为这一类的实例添加公有数据,节省空间
+     */
+
+    //创建一个类
+    function Person(name){
+      this.name = name;
+    }
+    //创建类的实例
+    var person = new Person("zhangSan");
+    //验证类的prototype和实例的___proto__指向同一个原型函数
+    console.log(Person.prototype === person.__proto__); //true
+
+    //使用举例：
+    // 向原型函数中添加一个公有方法sayName
+    Person.prototype.sayName = function () {
+      console.log("我是" + this.name);
+    };
+    //另外创建一个实例
+    var person2 = new Person("liSi");
+    //Person类的两个不同实例都有sayName方法
+    person.sayName();
+    person2.sayName();
+
+
+    //思考
+    Person.prototype.age = 18;
+    // Person.prototype.name = "wangWu";
+    //(1)
+    console.log(person.__proto__.age, person.age); //18 18
+    //(2)
+    person.__proto__.sayName(); //我是undefined
+    person.sayName(); //我是zhangSan
+    //(3)
+    console.log(person.__proto__.name, person.name);//undefined zhangSan
+
+
+    //所以执行过程应该是：先在构造函数中找，找到就输出，没有找到就去公共区域找
+    //  (1)中Person中没有age，去公共区域找的age，所以两次输出相同；比较（3），Person中已有name，所有两次输出不同。
+    //  (2)同理，都是去公共区域找的sayName，两次输出不同是因为this的指代不同：
+    //    person.__proto__.sayName()的this指代公共区域，公共区域没有name所以输出undefined
+    //    person.sayName()的this指代person，所以输出zhangSan
