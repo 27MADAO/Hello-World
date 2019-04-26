@@ -1,0 +1,10 @@
+git mv A B //同为文件夹则改名，A文件B文件夹则移动
+
+git remote -v //查看远程
+git remote add origin url //添加远程（origin可以改别的远程名，但是一般用origin）
+git remote rm origin //移除指定远程
+
+cat file //查看文件
+vi file //修改文件
+
+git pull --allow-unrelated-histories //允许从非默认远程上pull代码
