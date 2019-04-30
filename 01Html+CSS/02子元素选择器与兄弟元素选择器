@@ -3,6 +3,6 @@ div span{} div的所有后代span（父子关系）
 div>span{} div的子代span（父子关系）
 
 兄弟元素选择器：
-div~span{} div后面紧挨着的一个span（兄弟关系）
-div+span{} div后面的所有span（兄弟关系）
+div~span{} div后面的所有span（兄弟关系）
+div+span{} div后面紧挨着的一个span（兄弟关系）
 
