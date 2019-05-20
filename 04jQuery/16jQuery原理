@@ -1,0 +1,8 @@
+1.jQuery本质是一个闭包（立即执行的函数）。
+2.为什么用闭包来实现？
+  避免多个框架的变量名冲突。
+3.如何让外界访问jQuery内部变量？
+  window.xxx = xxx。
+4.为什么参数传（window，undefined）？
+  window: 方便后期压缩；提升查找效率。
+  undefined：方便后期压缩；IE9一下的undefined可以被修改，为了保证使用的undefined没有被修改
