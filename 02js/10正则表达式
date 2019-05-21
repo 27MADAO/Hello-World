@@ -10,7 +10,7 @@
     var reg2 = new RegExp("a", "i");
 
     //test()方法：检查是否符合规则，返回true/false
-    //exec()方法：返回匹配的内容
+    //exec()方法：返回匹配的内容，如果在reg表达式中用括号括出部分内容，则会同时把括住的内容填入数组返回
     var reg3 = /[abc]d/; //[]里为或的关系，也可以a|b|c；[]可以简写[a-c],表从a到c
     console.log(reg3.test("cd")); //true
 
