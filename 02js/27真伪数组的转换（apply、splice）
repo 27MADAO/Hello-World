@@ -1,0 +1,22 @@
+
+伪数组：类似真数组，有值，有length，实为对象
+
+1.真数组=>伪数组 
+  [].push.apply(obj, arr)
+  (1)通过[].push找到数组中的push方法
+  (2)通过apply(obj)修改push方法的this为obj
+  (3)将arr中的元素传给push方法的形参（包括length属性）
+  (4)将形参添加给this（即将arr内容添加给了obj）
+  
+2.伪数组=>真数组
+  var arr = [].slice.apply(obj)
+  (1)通过[].slice找到数组中的slice方法（当参数为空值，会将数组值一一取出返回成新数组）
+  (2)通过apply(obj)修改slice方法的this为obj
+  (3)将this的值一一取出返回成新数组
+  (4)将新数组赋给arr
+  
+3.判断真伪数组：
+  ({}).toString.apply(arr) //{}默认用来划分代码块，用作空对象需()括起来
+  >>> arr为真数组时，会返回[object Array]; 
+  >>> arr为伪数组时，会返回[object Object]
+  
