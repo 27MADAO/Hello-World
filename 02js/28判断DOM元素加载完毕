@@ -5,7 +5,7 @@
     //DOM元素加载完毕后执行
     //比上面更快，但是IE8及以下不支持这种绑定
   })
-  兼容IE8时：
+  兼容IE8及以下时：
   document.attactEvent("onreadystatechange", function () {
     //DOM元素加载状态改变时执行
     //相应的document.readyState有四个值：uninitialized --未开始载入
