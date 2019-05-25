@@ -1,0 +1,15 @@
+1.window.onload = function () {
+    //DOM元素和资源全部加载完毕后执行
+  }
+2.document.addEventListener("DOMContentLoaded", function () {
+    //DOM元素加载完毕后执行
+    //比上面更快，但是IE8及以下不支持这种绑定
+  })
+  兼容IE8时：
+  document.attactEvent("onreadystatechange", function () {
+    //DOM元素加载状态改变时执行
+    //相应的document.readyState有四个值：uninitialized --未开始载入
+                                        loading --载入中
+                                        interactive --已加载，可以开始交互
+                                        complete --加载完成 （√）
+  })
