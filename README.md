@@ -4,7 +4,7 @@
 ###    html，css，js，jQuery，git；  ⚪
 基础的会用，高阶一点的东西需要看文档
 ###    html5，css3，bootstrap，ES6；  
-html5、css3看文档会用一些；boostrap还没看；ES6知道一点，let、cosnt、箭头函数
+html5、css3看文档用；boostrap还没看；ES6知道：let、const、箭头函数
 ###    vue.js，react.js，angular.js等之一；  
 react基础的会用（父子间数据传递和一些常用生命周期函数），其他内容可以看文档使用；
 vue似乎用的更广，待学习
