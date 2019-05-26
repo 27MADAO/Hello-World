@@ -10,3 +10,5 @@ vi file //修改文件
 
 git commit --amend -m "message" //修改提交信息
 git pull --allow-unrelated-histories //允许从非默认远程上pull代码
+
+以后要删除仓库要注意，如果只是把内容复制给其他仓库，提交记录会被删除的。要经过一些git操作才能保留记录
