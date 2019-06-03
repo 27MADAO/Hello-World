@@ -1,0 +1,28 @@
+1.新的语义标签和属性
+  标签：header、main、footer、article、aside、nav、等
+  属性：data-xxx(自定义属性)
+  
+2.表单新特性
+  type：email、tel、url、number、search、range、color、time、date、datetime-local、month、week
+  其他属性：placeholder、autofocus、autocomplete、require、pattern、form
+  表单事件：oninput、oninvalid
+  
+3.视频和音频
+  标签：video、audio
+  属性：controls(控制台)、autoplay(是否自动播放)、loop(是否循环播放)、poster(视频封面); 
+        duration(总时长)、currentTime(当前播放时刻)、paused(是否暂停中)、ended(是否已播完)
+  事件：canplay(加载完毕)、timeupdate(播放中)、pause(暂停)、ended(播放完毕)
+  方法：play()播放、pause()暂停、load(重新加载)
+  
+4.Canvas绘图
+  暂没了解过
+  
+5.SVG绘图
+  暂没了解过
+  
+6.地理定位
+  可以用百度API
+  
+7.拖放API
+  拖放元素事件：dragstart、dragleave、dragend、drag
+  目标元素事件：dragenter、dragover、dragleave、drag
